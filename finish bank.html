@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Bank of Thailand</title> 
+  <link rel="stylesheet" href="styles.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+ <style type="text/css" id="dcoder_stylesheet">/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Header */
+.bank-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+}
+
+.bank-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bank-header h1 {
+    font-size: 24px;
+}
+
+/* Login Container */
+.login-container {
+    text-align: center;
+    padding: 50px;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 50px auto;
+    border-radius: 10px;
+}
+
+.login-container input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login-container button {
+    width: 100%;
+    background: #2980b9;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Dashboard */
+.dashboard {
+    padding: 20px;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.feature {
+    background: #ecf0f1;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    width: 150px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.feature:hover {
+    transform: scale(1.1);
+}
+
+.feature i {
+    font-size: 2rem;
+    color: #3498db;
+}
+
+.feature p {
+    margin: 10px 0 0;
+    font-weight: bold;
+}
+
+/* Winner Card */
+#winner-card {
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+}
+
+#winner-card table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#winner-card th, #winner-card td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}</style></head> 
+ <body> <!-- Header --> 
+  <header class="bank-header"> 
+   <div class="logo"> <i class="fas fa-landmark"></i> 
+    <h1>Bank of Thailand</h1> 
+   </div> 
+  </header> <!-- Login Section --> 
+  <div class="login-container" id="login-page"> 
+   <h2>Welcome to the Safest Bank</h2> 
+   <form id="login-form"> 
+    <input type="text" placeholder="Enter Username" id="username" required> 
+    <input type="password" placeholder="Enter Password" id="password" required> <button type="button" onclick="login()">Login</button> 
+   </form> 
+  </div> <!-- Dashboard --> 
+  <div class="dashboard" id="dashboard" style="display: none;"> 
+   <header> 
+    <h2>Account Holder: <span id="account-holder">user</span></h2> 
+   </header> 
+   <div class="features"> 
+    <div class="feature" onclick="sendMoney()"> <i class="fas fa-paper-plane"></i> 
+     <p>Send Money</p> 
+    </div> 
+    <div class="feature" onclick="cashOut()"> <i class="fas fa-money-bill-wave"></i> 
+     <p>Cash Out</p> 
+    </div> 
+    <div class="feature" onclick="depositMoney()"> <i class="fas fa-piggy-bank"></i> 
+     <p>Deposit Money</p> 
+    </div> 
+    <div class="feature" onclick="checkBalance()"> <i class="fas fa-wallet"></i> 
+     <p>Balance Check</p> 
+    </div> 
+    <div class="feature" onclick="viewWinnerCard()"> <i class="fas fa-trophy"></i> 
+     <p>Winner Card</p> 
+    </div> 
+    <div class="feature" onclick="accountSettings()"> <i class="fas fa-cogs"></i> 
+     <p>Settings</p> 
+    </div> 
+   </div> 
+  </div> <!-- Winner Card Details --> 
+  <div id="winner-card" style="display: none;"> 
+   <h2>Winner Card Details</h2> 
+   <table> 
+    <tbody>
+     <tr>
+      <th>Name</th>
+      <td>John Doe</td>
+     </tr> 
+     <tr>
+      <th>Contact No</th>
+      <td>+66-1234-5678</td>
+     </tr> 
+     <tr>
+      <th>Country</th>
+      <td>Thailand</td>
+     </tr> 
+     <tr>
+      <th>Account No</th>
+      <td>1234567890</td>
+     </tr> 
+     <tr>
+      <th>Winning Amount</th>
+      <td>1,000,000 THB</td>
+     </tr> 
+    </tbody>
+   </table> <button onclick="goBack()">Back to Dashboard</button> 
+  </div> 
+  <script src="script.js"></script> 
+ 
+<script type="text/javascript" id="dcoder_script">function login() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username && password) {
+        document.getElementById("login-page").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+        document.getElementById("account-holder").textContent = username;
+    } else {
+        alert("Please enter valid credentials!");
+    }
+}
+
+function sendMoney() {
+    alert("Send Money Successful!");
+}
+
+function cashOut() {
+    alert("Cash Out Successful!");
+}
+
+function depositMoney() {
+    alert("Deposit Successful!");
+}
+
+function checkBalance() {
+    alert("Your current balance is 10,000 THB.");
+}
+
+function viewWinnerCard() {
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("winner-card").style.display = "block";
+}
+
+function accountSettings() {
+    alert("Account settings page coming soon!");
+}
+
+function goBack() {
+    document.getElementById("winner-card").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+}</script></body></html>
